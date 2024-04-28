@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace CSharpSelFramework.utilities
+namespace SeleniumFramework.utilities
 {
     public class JsonReader
     {

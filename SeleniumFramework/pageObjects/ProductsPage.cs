@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
-namespace CSharpSelFramework.pageObjects
+namespace SeleniumFramework.pageObjects
 {
     public class ProductsPage
     {

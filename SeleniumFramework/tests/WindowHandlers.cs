@@ -2,12 +2,13 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumFramework.utilities;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace SeleniumLearning
+namespace SeleniumFramework.tests
 {
     [Parallelizable(ParallelScope.Self)]
-    public class WindowHandlers
+    public class WindowHandlers : Base
     {
         IWebDriver driver;
 

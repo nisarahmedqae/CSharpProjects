@@ -39,15 +39,17 @@
 		<None Remove="ExtentReports" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="utilities\" />
-		<Folder Include="tests\" />
 		<Folder Include="pageObjects\" />
 	</ItemGroup>
-
 	<ItemGroup>
-		<None Update="utilities\testData.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
+	  <Compile Update="tests\E2ETest.cs">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="utilities\testData.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 	<Target Name="CopyCustomContent" AfterTargets="AfterBuild">
 		<Copy SourceFiles="App.config" DestinationFiles="$(OutDir)\testhost.dll.config" />

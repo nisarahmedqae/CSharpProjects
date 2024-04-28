@@ -1,12 +1,10 @@
-﻿
-
-using System;
+﻿using System;
 using System.Configuration;
 using System.IO;
 using System.Threading;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using CSharpSelFramework.utilities;
+using SeleniumFramework.utilities;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -15,7 +13,7 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace CSharpSelFramework.utilities
+namespace SeleniumFramework.utilities
 {
     public class Base
     {
@@ -143,8 +141,6 @@ namespace CSharpSelFramework.utilities
            var screenshot= ts.GetScreenshot().AsBase64EncodedString;
 
            return MediaEntityBuilder.CreateScreenCaptureFromBase64String(screenshot, screenShotName).Build();
-
-
 
 
         }

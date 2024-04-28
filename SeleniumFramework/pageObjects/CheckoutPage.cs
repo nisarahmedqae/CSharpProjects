@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 using SeleniumExtras.PageObjects;
 
-namespace CSharpSelFramework.pageObjects
+namespace SeleniumFramework.pageObjects
 {
     public class CheckoutPage
     {

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharpSelFramework.pageObjects;
-using CSharpSelFramework.utilities;
+using SeleniumFramework.pageObjects;
+using SeleniumFramework.utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace SeleniumLearning
+namespace SeleniumFramework.tests
 {
     [Parallelizable(ParallelScope.Self)]
     public class E2ETest : Base
@@ -32,11 +32,6 @@ namespace SeleniumLearning
         public void EndToEndFlow(String username, String password, String[] expectedProducts)
 
         {
-            //username1 -100
-            //Login page ->
-            //Documents request ->
-            //
-
            // String[] expectedProducts = { "iphone X", "Blackberry" };
             String[] actualProducts = new string[2];
             LoginPage loginPage = new LoginPage(getDriver());
@@ -67,12 +62,11 @@ namespace SeleniumLearning
 
 
             }
+
             Assert.AreEqual(expectedProducts, actualProducts);
             checkoutPage.checkOut();
 
-
-
-
+            
             driver.Value.FindElement(By.Id("country")).SendKeys("ind");
             WebDriverWait wait = new WebDriverWait(driver.Value, TimeSpan.FromSeconds(8));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.LinkText("India")));
@@ -84,9 +78,6 @@ namespace SeleniumLearning
             String confirText = driver.Value.FindElement(By.CssSelector(".alert-success")).Text;
 
             StringAssert.Contains("Success", confirText);
-
-
-
 
         }
 
@@ -101,15 +92,7 @@ namespace SeleniumLearning
             driver.Value.FindElement(By.Id("username")).Clear();
             driver.Value.FindElement(By.Id("username")).SendKeys("rahulshetty");
             driver.Value.FindElement(By.Name("password")).SendKeys("123456");
-            //css selector & xpath
-            //  tagname[attribute ='value']
-            //    #id  #terms  - class name -> css .classname
-            //    driver.FindElement(By.CssSelector("input[value='Sign In']")).Click();
 
-            //    //tagName[@attribute = 'value']
-
-            // CSS - .text-info span:nth-child(1) input
-            //xpath - //label[@class='text-info']/span/input
 
             driver.Value.FindElement(By.XPath("//div[@class='form-group'][5]/label/span/input")).Click();
 
@@ -121,20 +104,15 @@ namespace SeleniumLearning
 
             String errorMessage = driver.Value.FindElement(By.ClassName("alert-danger")).Text;
             TestContext.Progress.WriteLine(errorMessage);
-
-
         }
-
-
-
+        
 
         public static IEnumerable<TestCaseData> AddTestDataConfig()
 
         {
-
           yield return new TestCaseData(getDataParser().extractData("username"), getDataParser().extractData("password"), getDataParser().extractDataArray("products"));
-            yield return new TestCaseData(getDataParser().extractData("username"), getDataParser().extractData("password"), getDataParser().extractDataArray("products"));
-            yield return new TestCaseData(getDataParser().extractData("username_wrong"), getDataParser().extractData("password_wrong"), getDataParser().extractDataArray("products"));
+          yield return new TestCaseData(getDataParser().extractData("username"), getDataParser().extractData("password"), getDataParser().extractDataArray("products"));
+          yield return new TestCaseData(getDataParser().extractData("username_wrong"), getDataParser().extractData("password_wrong"), getDataParser().extractDataArray("products"));
         }
     }
 
